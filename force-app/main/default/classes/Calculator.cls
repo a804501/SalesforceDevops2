@@ -5,10 +5,13 @@ public with sharing class Calculator {
     public integer add(integer a, integer b) {
         return a + b;
     }
-    public integer sub(ineger a, integer b) {
+    public integer sub(integer a, integer b) {
         return a - b;
     }
     public Integer mul(integer a, integer b) {
         return a * b;
+    }
+    public integer div(integer a, integer b) {
+        return a / b; 
     }
 }
