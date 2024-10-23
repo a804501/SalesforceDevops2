@@ -18,5 +18,6 @@ public with sharing class Calculator {
     }
     // bug fix 1
     // bug fix 2
+    // hotfix 1
     
 }
