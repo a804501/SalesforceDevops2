@@ -16,4 +16,5 @@ public with sharing class Calculator {
     public integer mul(integer a, integer b){
         return a*b;
     }
+    // bugs to fix
 }
