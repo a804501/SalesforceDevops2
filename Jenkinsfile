@@ -27,6 +27,7 @@ node {
 	
 		withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
 			stage('Deploye Code') {
+				env.PATH = env.PATH + ";c:\\Windows\\System32"
 				if (isUnix()) {
 					rc = sh returnStatus: true, script: "${toolbelt}/sf org login jwt --username ${HUB_ORG} --jwt-key-file ${jwt_key_file} --client-id ${CONNECTED_APP_CONSUMER_KEY} --instance-url ${SFDC_HOST} --set-default-dev-hub"
 				}else{
