@@ -31,7 +31,7 @@ node {
 				if (isUnix()) {
 					rc = sh returnStatus: true, script: "${toolbelt}/sf org login jwt --username ${HUB_ORG} --jwt-key-file ${jwt_key_file} --client-id ${CONNECTED_APP_CONSUMER_KEY} --instance-url ${SFDC_HOST} --set-default-dev-hub"
 				}else{
-				//bat "${toolbelt}/sf update"
+				bat "${toolbelt}/sf update"
 				//bat "${toolbelt}/sf org logout --target-org ${HUB_ORG} --no-prompt" 
 					 rc = bat returnStatus: true, script: "${toolbelt}/sf org login jwt --username ${HUB_ORG} --jwt-key-file ${jwt_key_file} --client-id ${CONNECTED_APP_CONSUMER_KEY} --instance-url ${SFDC_HOST} --set-default-dev-hub"
 				}
