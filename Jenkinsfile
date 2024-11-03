@@ -1,28 +1,28 @@
 #!groovy
 import groovy.json.JsonSlurperClassic
 node {
+	
+	def BUILD_NUMBER=env.BUILD_NUMBER
+	def RUN_ARTIFACT_DIR="tests/${BUILD_NUMBER}"
+	def SFDC_USERNAME
+	
+	def HUB_ORG=env.HUB_ORG_PROD
+	def SFDC_HOST = env.SFDC_HOST_PROD
+	def JWT_KEY_CRED_ID = env.JWT_CRED_ID_PROD
+	def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_PROD
+	
+	println 'KEY IS' 
+	println JWT_KEY_CRED_ID
+	println HUB_ORG
+	println SFDC_HOST
+	println CONNECTED_APP_CONSUMER_KEY
+	def toolbelt = tool 'toolbelt'
 
-    def BUILD_NUMBER=env.BUILD_NUMBER
-    def RUN_ARTIFACT_DIR="tests/${BUILD_NUMBER}"
-    def SFDC_USERNAME
-
-    def HUB_ORG=env.HUB_ORG_PROD
-    def SFDC_HOST = env.SFDC_HOST_PROD
-    def JWT_KEY_CRED_ID = env.JWT_CRED_ID_PROD
-    def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_PROD
-
-    println 'KEY IS' 
-    println JWT_KEY_CRED_ID
-    println HUB_ORG
-    println SFDC_HOST
-    println CONNECTED_APP_CONSUMER_KEY
-    def toolbelt = tool 'toolbelt'
-
-    stage('checkout source') {
-        // when running in multi-branch job, one must issue this command
-        checkout scm
-    }
-
+	stage('checkout source') {
+		// when running in multi-branch job, one must issue this command
+	        checkout scm
+	}
+	
 	withEnv(["HOME=${env.WORKSPACE}"]) {
 	
 		withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
